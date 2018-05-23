@@ -1,5 +1,6 @@
 """
 G-code generation for the bottom
+2018-05-23 - PW - fixes in stringer  cutoff path
 """
 
 import boardcad.gui.jdk.BoardCAD
@@ -36,11 +37,11 @@ stringerCutoff=machine.stringerCutoff
 
 # Create a cutter
 
-cutter=boardcam.cutters.FlatCutter()
-cutter.setRadius(10.0)
-#cutter=boardcam.cutters.STLCutter()
-#cutter.init(machine.toolName)
-#cutter.scale(1.0,1.0,1.0)
+#cutter=boardcam.cutters.FlatCutter()
+#cutter.setRadius(10.0)
+cutter=boardcam.cutters.STLCutter()
+cutter.init(machine.toolName)
+cutter.scale(1.0,1.0,1.0)
 
 # Get the bottom and deck surface from BoardCAD
 
@@ -112,13 +113,21 @@ stringer_cut=[]
 
 s=bottom.getMinS()
 t=(bottom.getMaxT()-bottom.getMinT())/2
+p=bottom.getPoint(s,t)
+p_temp=cutter.calcOffset(p,cadcore.NurbsPoint(-1,0,0))
+p.x=p_temp.x
+stringer_cut.append(p)
 while (s<bottom.getMaxS()):
 	p=bottom.getPoint(s,t)
 	n=bottom.getNormal(s,t)
 	p=cutter.calcOffset(p,n)
 	stringer_cut.append(p)
 	s=s+length_step
-
+s=bottom.getMaxS()
+p=bottom.getPoint(s,t)
+p_temp=cutter.calcOffset(p,cadcore.NurbsPoint(1,0,0))
+p.x=p_temp.x
+stringer_cut.append(p)
 
 # calculate tool path bottom
 

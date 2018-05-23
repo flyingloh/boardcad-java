@@ -1,5 +1,6 @@
 """
 G-code generation for the deck
+2018-05-23 - PW - fixes in stringer  cutoff path
 """
 
 import boardcad.gui.jdk.BoardCAD
@@ -41,11 +42,11 @@ outlineOffsetY=machine.outlineOffset
 
 # Create a cutter
 
-cutter=boardcam.cutters.FlatCutter()
-cutter.setRadius(10.0)
-#cutter=boardcam.cutters.STLCutter()
-#cutter.init(machine.toolName)
-#cutter.scale(1.0,1.0,1.0)
+#cutter=boardcam.cutters.FlatCutter()
+#cutter.setRadius(10.0)
+cutter=boardcam.cutters.STLCutter()
+cutter.init(machine.toolName)
+cutter.scale(1.0,1.0,1.0)
 
 # Get the deck surface from BoardCAD
 
@@ -81,7 +82,8 @@ stringer_cut=[]
 s=deck.getMaxS()
 t=(deck.getMaxT()-deck.getMinT())/2
 p=deck.getPoint(s,t)
-p=cutter.calcOffset(p,cadcore.NurbsPoint(1,0,0))
+p_temp=cutter.calcOffset(p,cadcore.NurbsPoint(1,0,0))
+p.x=p_temp.x
 stringer_cut.append(p)
 while (s>deck.getMinS()):
 	p=deck.getPoint(s,t)
@@ -92,7 +94,8 @@ while (s>deck.getMinS()):
 
 s=deck.getMinS()
 p=deck.getPoint(s,t)	
-p=cutter.calcOffset(p,cadcore.NurbsPoint(-1,0,0))
+p_temp=cutter.calcOffset(p,cadcore.NurbsPoint(-1,0,0))
+p.x=p_temp.x
 stringer_cut.append(p)
 
 # calculate tool path outline
@@ -167,6 +170,8 @@ for offsetZ in stringerOffsetZ:
 		toolpath.append(cadcore.NurbsPoint(p.x,p.y+offsetZ,0.0))
 	f.write('g1 x%.3f z%.3f\n' % (p.x+supportEndX, p.y+supportEndZ+offsetZ-stringerCutoff))
 	toolpath.append(cadcore.NurbsPoint(p.x,p.y+offsetZ-stringerCutoff,0.0))
+f.write(zsafe)
+toolpath.append(cadcore.NurbsPoint(p.x,zmax-supportEndZ,0.0))
 
 for offsetZ in outlineOffsetZ:
 	f.write('(cutting outline right)\n')
