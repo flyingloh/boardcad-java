@@ -1,5 +1,6 @@
 """
 G-code generation for the deck
+2018-05-28 - PW - Added deck rail cut control
 2018-05-23 - PW - fixes in stringer  cutoff path
 """
 
@@ -18,6 +19,8 @@ machine.read_machine_data()
 
 width_steps=machine.deckCuts
 length_steps=50
+num_rail_cuts=machine.deckRailCuts
+deck_rail_angle=machine.deckRailAngle
 
 filename=machine.deckFileName
 zmax=machine.zMaxHeight
@@ -69,12 +72,28 @@ while (max_width - math.fabs(p.z) <= 0):
 
 t_outline=t
 
-
+#DEBUG
+"""
+print 'max width = %0.3f' % max_width
+print 't = %0.3f' % t
+print 't_max = %0.3f' % deck.getMaxT()
+print 't_min = %0.3f' % deck.getMinT()
+"""
+# Determine the width at which the rail angle is achieved (in the centre of 
+# the deck, starting at the minimum width percentage
+s_mid = (deck.getMaxS()-deck.getMinS())/2
+t=t_outline
+n=deck.getNormal(s_mid,t)
+while ((math.fabs(n.z)/math.fabs(n.y))>math.tan(math.radians(90-deck_rail_angle))):   	#tan(90-deck angle)
+	t=t+0.01
+	n=deck.getNormal(s_mid,t)
+t_rail_start = t
+	
 # Calculate step length
 
-width_step=((deck.getMaxT()-deck.getMinT())/2-t_outline-0.01)/width_steps
+width_step=((deck.getMaxT()-deck.getMinT())/2-t_rail_start-0.01)/width_steps
 length_step=(deck.getMaxS()-deck.getMinS())/length_steps
-
+rail_step=(t_rail_start-t_outline-0.01)/num_rail_cuts
 
 # calculate tool path stringer
 stringer_cut=[]
@@ -118,7 +137,7 @@ deck_cut=[]
 s=deck.getMinS();
 t=(deck.getMaxT()-deck.getMinT())/2-00.1
 
-while (t>t_outline):
+while (t>t_rail_start):
 	while (s<deck.getMaxS()):
 		p=deck.getPoint(s,t) 
 		n=deck.getNormal(s,t)
@@ -134,6 +153,22 @@ while (t>t_outline):
 		s=s-length_step
 	t=t-width_step
 
+# Rail cuts
+while (t>t_outline):
+	while (s<deck.getMaxS()):
+		p=deck.getPoint(s,t) 
+		n=deck.getNormal(s,t)
+		p=cutter.calcOffset(p,n)
+		deck_cut.append(p)
+		s=s+length_step
+	t=t-rail_step
+	while (s>deck.getMinS()):
+		p=deck.getPoint(s,t)
+		n=deck.getNormal(s,t)
+		p=cutter.calcOffset(p,n)		
+		deck_cut.append(p)
+		s=s-length_step
+	t=t-rail_step
 
 # Avoid stringer collision
 
