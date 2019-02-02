@@ -44,14 +44,14 @@ abstract public class AbstractPluginHandler {
 		{
 			try{
 				URLClassLoader loader = new URLClassLoader(new URL[]{new URL("file:///" + jarFiles[i])});
-				Class c = loader.loadClass(FileTools.getFilename(jarFiles[i]));
+				Class<?> c = loader.loadClass(FileTools.getFilename(jarFiles[i]));
 				Method m = c.getMethod("getMenu", new Class[] { });
 				m.setAccessible(true);
 				int mods = m.getModifiers();
 				if (m.getReturnType() != void.class || !Modifier.isPublic(mods)) {
 					throw new NoSuchMethodException("getMenu");
 				}
-				JMenu menu = (JMenu)m.invoke(c.newInstance(), new Object[] {  });
+				JMenu menu = (JMenu)m.invoke(c.getDeclaredConstructor().newInstance(), new Object[] {  });
 				if(menu != null)
 				{
 					onNewPluginMenu(menu);
@@ -63,7 +63,7 @@ abstract public class AbstractPluginHandler {
 				if (m.getReturnType() != void.class || !Modifier.isPublic(mods)) {
 					throw new NoSuchMethodException("writeDeck");
 				}
-				JComponent component = (JComponent)m.invoke(c.newInstance(), new Object[] {  });
+				JComponent component = (JComponent)m.invoke(c.getDeclaredConstructor().newInstance(), new Object[] {  });
 				if(component != null)
 				{
 					onNewPluginComponent(component);

@@ -27,7 +27,7 @@ public class ComboBoxDialog extends JDialog {
 
 	private boolean mWasCancelled = true;
 	
-	private JComboBox mComboBox = null;
+	private JComboBox<String> mComboBox = null;
 
 	/**
 	 * @param owner
@@ -174,7 +174,7 @@ public class ComboBoxDialog extends JDialog {
 	 */
 	private JComboBox getMComboBox() {
 		if (mComboBox == null) {
-			mComboBox = new JComboBox();
+			mComboBox = new JComboBox<String>();
 		}
 		return mComboBox;
 	}

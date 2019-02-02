@@ -3125,30 +3125,30 @@ public class BoardCAD implements Runnable, ActionListener, ItemListener, KeyEven
 
 						Settings supportsSettings = machineConfig.getCategory(LanguageResource.getString("BLANKHOLDINGSYSTEMCATEGORY_STR"));
 
-						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_1_POS, new Double(brd.getStrut1()[0]));
-						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_2_POS, new Double(brd.getStrut2()[0]));
+						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_1_POS, Double.valueOf(brd.getStrut1()[0]));
+						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_2_POS, Double.valueOf(brd.getStrut2()[0]));
 						
-						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_1_HEIGHT, new Double(brd.getStrut1()[1]));
-						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_2_HEIGHT, new Double(brd.getStrut2()[1]));
+						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_1_HEIGHT, Double.valueOf(brd.getStrut1()[1]));
+						supportsSettings.setObject(SupportsBlankHoldingSystem.SUPPORT_2_HEIGHT, Double.valueOf(brd.getStrut2()[1]));
 					}
 							
 					generalSettings.setObject(MachineConfig.BLANK, generalSettings.new FileName(brd.getBlankFile()));
 
 					Settings cutsSettings = machineConfig.getCategory(LanguageResource.getString("CUTSCATEGORY_STR"));
 
-					cutsSettings.setObject(MachineConfig.DECK_CUTS, new Integer(brd.getTopCuts()));
-					cutsSettings.setObject(MachineConfig.DECK_RAIL_CUTS, new Integer(brd.getTopShoulderCuts()));
-					cutsSettings.setObject(MachineConfig.BOTTOM_CUTS, new Integer(brd.getBottomCuts()));
-					cutsSettings.setObject(MachineConfig.BOTTOM_RAIL_CUTS, new Integer(brd.getBottomRailCuts()));
+					cutsSettings.setObject(MachineConfig.DECK_CUTS, Integer.valueOf(brd.getTopCuts()));
+					cutsSettings.setObject(MachineConfig.DECK_RAIL_CUTS, Integer.valueOf(brd.getTopShoulderCuts()));
+					cutsSettings.setObject(MachineConfig.BOTTOM_CUTS, Integer.valueOf(brd.getBottomCuts()));
+					cutsSettings.setObject(MachineConfig.BOTTOM_RAIL_CUTS, Integer.valueOf(brd.getBottomRailCuts()));
 					
-					cutsSettings.setObject(MachineConfig.DECK_ANGLE, new Double(brd.getTopShoulderAngle()));
-					cutsSettings.setObject(MachineConfig.DECK_RAIL_ANGLE, new Double(brd.getMaxAngle()));
+					cutsSettings.setObject(MachineConfig.DECK_ANGLE, Double.valueOf(brd.getTopShoulderAngle()));
+					cutsSettings.setObject(MachineConfig.DECK_RAIL_ANGLE, Double.valueOf(brd.getMaxAngle()));
 					
 					Settings speedSettings = machineConfig.getCategory(LanguageResource.getString("SPEEDCATEGORY_STR"));
-					speedSettings.setObject(MachineConfig.CUTTING_SPEED,  new Double(brd.getRegularSpeed()));
-					speedSettings.setObject(MachineConfig.CUTTING_SPEED_STRINGER,  new Double(brd.getStringerSpeed()));
-					speedSettings.setObject(MachineConfig.CUTTING_SPEED_RAIL,  new Double(brd.getRegularSpeed()));
-					speedSettings.setObject(MachineConfig.CUTTING_SPEED_OUTLINE,  new Double(brd.getRegularSpeed()));
+					speedSettings.setObject(MachineConfig.CUTTING_SPEED,  Double.valueOf(brd.getRegularSpeed()));
+					speedSettings.setObject(MachineConfig.CUTTING_SPEED_STRINGER,  Double.valueOf(brd.getStringerSpeed()));
+					speedSettings.setObject(MachineConfig.CUTTING_SPEED_RAIL,  Double.valueOf(brd.getRegularSpeed()));
+					speedSettings.setObject(MachineConfig.CUTTING_SPEED_OUTLINE,  Double.valueOf(brd.getRegularSpeed()));
 					
 				}
 					
@@ -3182,15 +3182,15 @@ public class BoardCAD implements Runnable, ActionListener, ItemListener, KeyEven
 					
 					brd.setTopShoulderAngle(cutsSettings.getDouble(MachineConfig.DECK_ANGLE));
 					brd.setMaxAngle(cutsSettings.getDouble(MachineConfig.DECK_RAIL_ANGLE));
-//					cutsSettings.getDouble(MachineConfig.BOTTOM_ANGLE, new Double(90));
-//					cutsSettings.getDouble(MachineConfig.BOTTOM_RAIL_ANGLE, new Double(90));
+//					cutsSettings.getDouble(MachineConfig.BOTTOM_ANGLE, Double.valueOf(90));
+//					cutsSettings.getDouble(MachineConfig.BOTTOM_RAIL_ANGLE, Double.valueOf(90));
 					
 					Settings speedSettings = machineConfig.getCategory(LanguageResource.getString("SPEEDCATEGORY_STR"));
 					brd.setRegularSpeed((int)speedSettings.getDouble(MachineConfig.CUTTING_SPEED));
 					brd.setStringerSpeed((int)speedSettings.getDouble(MachineConfig.CUTTING_SPEED_STRINGER));
 					brd.setRegularSpeed((int)speedSettings.getDouble(MachineConfig.CUTTING_SPEED_RAIL));
-//					speedSettings.getDouble(MachineConfig.CUTTING_SPEED_NOSE_REDUCTION,  new Double(0.5));
-//					speedSettings.getDouble(MachineConfig.CUTTING_SPEED_TAIL_REDUCTION,  new Double(0.5));
+//					speedSettings.getDouble(MachineConfig.CUTTING_SPEED_NOSE_REDUCTION,  Double.valueOf(0.5));
+//					speedSettings.getDouble(MachineConfig.CUTTING_SPEED_TAIL_REDUCTION,  Double.valueOf(0.5));
 //					brd.setNoseLength(speedSettings.getDouble(MachineConfig.CUTTING_SPEED_NOSE_REDUCTION_DIST));
 //					brd.setTailLength(speedSettings.getDouble(MachineConfig.CUTTING_SPEED_TAIL_REDUCTION_DIST));
 				}
@@ -5583,7 +5583,7 @@ public class BoardCAD implements Runnable, ActionListener, ItemListener, KeyEven
 											LanguageResource.getString("CENTIMETERSRADIOBUTTON_STR"),
 											LanguageResource.getString("METERSRADIOBUTTON_STR")
 											};
-		JComboBox unitComboBox = new JComboBox(unitsStrList);
+		JComboBox<String> unitComboBox = new JComboBox<>(unitsStrList);
 		unitComboBox.setEditable(false);
 		unitComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(final ActionEvent e) {

@@ -205,7 +205,7 @@ public class MachineConfig extends CategorizedSettings
 
 		Settings generalSettings = addCategory(LanguageResource.getString("GENERALCATEGORY_STR"));
 		
-		generalSettings.addObject(USE_BRD_SETTINGS, new Boolean(true), LanguageResource.getString("USEBRDSETTINGS_STR"), onSupportSettingsChanged);
+		generalSettings.addObject(USE_BRD_SETTINGS, Boolean.valueOf(true), LanguageResource.getString("USEBRDSETTINGS_STR"), onSupportSettingsChanged);
 
 		HashMap<Integer, String> cutterTypes = new HashMap<Integer, String>();
 		cutterTypes.put(0, LanguageResource.getString("BULLNOSECUTTER_STR"));
@@ -296,40 +296,40 @@ public class MachineConfig extends CategorizedSettings
 		
 		cutsSettings.addMeasurement(LENGTHWISE_RESOLUTION, 1.0, LanguageResource.getString("LENGTHWISERESOLUTION_STR"));
 
-		cutsSettings.addObject(DECK_CUTS, new Integer(28), LanguageResource.getString("DECKCUTS_STR"));
-		cutsSettings.addObject(DECK_RAIL_CUTS, new Integer(7), LanguageResource.getString("DECKRAILCUTS_STR"));
-		cutsSettings.addObject(BOTTOM_CUTS, new Integer(26), LanguageResource.getString("BOTTOMCUTS_STR"));
-		cutsSettings.addObject(BOTTOM_RAIL_CUTS, new Integer(0), LanguageResource.getString("BOTTOMRAILCUTS_STR"));
-		cutsSettings.addObject(BOTTOM_CLEAN_UP_CUTS, new Integer(2), LanguageResource.getString("BOTTOMCLEANUPCUTS_STR"));
-		cutsSettings.addObject(DECK_CLEAN_UP_CUTS, new Integer(2), LanguageResource.getString("DECKCLEANUPCUTS_STR"));
+		cutsSettings.addObject(DECK_CUTS, Integer.valueOf(28), LanguageResource.getString("DECKCUTS_STR"));
+		cutsSettings.addObject(DECK_RAIL_CUTS, Integer.valueOf(7), LanguageResource.getString("DECKRAILCUTS_STR"));
+		cutsSettings.addObject(BOTTOM_CUTS, Integer.valueOf(26), LanguageResource.getString("BOTTOMCUTS_STR"));
+		cutsSettings.addObject(BOTTOM_RAIL_CUTS, Integer.valueOf(0), LanguageResource.getString("BOTTOMRAILCUTS_STR"));
+		cutsSettings.addObject(BOTTOM_CLEAN_UP_CUTS, Integer.valueOf(2), LanguageResource.getString("BOTTOMCLEANUPCUTS_STR"));
+		cutsSettings.addObject(DECK_CLEAN_UP_CUTS, Integer.valueOf(2), LanguageResource.getString("DECKCLEANUPCUTS_STR"));
 		
-		cutsSettings.addObject(DECK_STRINGER_CUT, new Boolean(true), LanguageResource.getString("DECKSTRINGERCUT_STR"));
-		cutsSettings.addObject(BOTTOM_STRINGER_CUT, new Boolean(true), LanguageResource.getString("BOTTOMSTRINGERCUT_STR"));
+		cutsSettings.addObject(DECK_STRINGER_CUT, Boolean.valueOf(true), LanguageResource.getString("DECKSTRINGERCUT_STR"));
+		cutsSettings.addObject(BOTTOM_STRINGER_CUT, Boolean.valueOf(true), LanguageResource.getString("BOTTOMSTRINGERCUT_STR"));
 
-		cutsSettings.addObject(STAY_AWAY_FROM_STRINGER, new Boolean(true), LanguageResource.getString("STAYAWAYFROMSTRINGER_STR"));
+		cutsSettings.addObject(STAY_AWAY_FROM_STRINGER, Boolean.valueOf(true), LanguageResource.getString("STAYAWAYFROMSTRINGER_STR"));
 		cutsSettings.addObject(STRINGER_WIDTH, generalSettings.new Measurement(0.5), LanguageResource.getString("STRINGERWIDTH_STR"));
 
-		cutsSettings.addObject(DECK_OUTLINE_CUT, new Boolean(true), LanguageResource.getString("DECKOUTLINECUT_STR"));
+		cutsSettings.addObject(DECK_OUTLINE_CUT, Boolean.valueOf(true), LanguageResource.getString("DECKOUTLINECUT_STR"));
 		HashMap<Integer, String> outlineDepthTypes = new HashMap<Integer, String>();
 		outlineDepthTypes.put(0, LanguageResource.getString("DECKOUTLINETOAPEXDEPTH_STR"));
 		outlineDepthTypes.put(1, LanguageResource.getString("DECKOUTLINETOBOTTOMDEPTH_STR"));
 		cutsSettings.addEnumeration(DECK_OUTLINE_CUT_DEPTH, 0, outlineDepthTypes, LanguageResource.getString("DECKOUTLINECUTDEPTH_STR"));
 		
-		cutsSettings.addObject(BOTTOM_OUTLINE_CUT, new Boolean(true), LanguageResource.getString("BOTTOMOUTLINECUT_STR"));
+		cutsSettings.addObject(BOTTOM_OUTLINE_CUT, Boolean.valueOf(true), LanguageResource.getString("BOTTOMOUTLINECUT_STR"));
 
-		cutsSettings.addObject(CUT_OFF_NOSE, new Boolean(false), LanguageResource.getString("CUTOFFNOSE_STR"));
-		cutsSettings.addObject(CUT_OFF_TAIL, new Boolean(false), LanguageResource.getString("CUTOFFTAIL_STR"));
+		cutsSettings.addObject(CUT_OFF_NOSE, Boolean.valueOf(false), LanguageResource.getString("CUTOFFNOSE_STR"));
+		cutsSettings.addObject(CUT_OFF_TAIL, Boolean.valueOf(false), LanguageResource.getString("CUTOFFTAIL_STR"));
 
-		cutsSettings.addObject(DECK_ANGLE, new Double(28), LanguageResource.getString("DECKDEFINITIONANGLE_STR"));
-		cutsSettings.addObject(DECK_RAIL_ANGLE, new Double(130), LanguageResource.getString("DECKRAILDEFINITIONANGLE_STR"));
-		cutsSettings.addObject(BOTTOM_ANGLE, new Double(90), LanguageResource.getString("BOTTOMDEFINITIONANGLE_STR"));
-		cutsSettings.addObject(BOTTOM_RAIL_ANGLE, new Double(90), LanguageResource.getString("BOTTOMRAILDEFINITIONANGLE_STR"));
+		cutsSettings.addObject(DECK_ANGLE, Double.valueOf(28), LanguageResource.getString("DECKDEFINITIONANGLE_STR"));
+		cutsSettings.addObject(DECK_RAIL_ANGLE, Double.valueOf(130), LanguageResource.getString("DECKRAILDEFINITIONANGLE_STR"));
+		cutsSettings.addObject(BOTTOM_ANGLE, Double.valueOf(90), LanguageResource.getString("BOTTOMDEFINITIONANGLE_STR"));
+		cutsSettings.addObject(BOTTOM_RAIL_ANGLE, Double.valueOf(90), LanguageResource.getString("BOTTOMRAILDEFINITIONANGLE_STR"));
 		
 		Settings speedSettings = addCategory(LanguageResource.getString("SPEEDCATEGORY_STR"));
-		speedSettings.addObject(CUTTING_SPEED,  new Double(80), LanguageResource.getString("CUTTINGSPEED_STR"));
-		speedSettings.addObject(CUTTING_SPEED_STRINGER,  new Double(254), LanguageResource.getString("STRINGERCUTTINGSPEED_STR"));
-		speedSettings.addObject(CUTTING_SPEED_RAIL,  new Double(254), LanguageResource.getString("RAILCUTTINGSPEED_STR"));
-		speedSettings.addObject(CUTTING_SPEED_OUTLINE,  new Double(254), LanguageResource.getString("OUTLINECUTTINGSPEED_STR"));
+		speedSettings.addObject(CUTTING_SPEED,  Double.valueOf(80), LanguageResource.getString("CUTTINGSPEED_STR"));
+		speedSettings.addObject(CUTTING_SPEED_STRINGER,  Double.valueOf(254), LanguageResource.getString("STRINGERCUTTINGSPEED_STR"));
+		speedSettings.addObject(CUTTING_SPEED_RAIL,  Double.valueOf(254), LanguageResource.getString("RAILCUTTINGSPEED_STR"));
+		speedSettings.addObject(CUTTING_SPEED_OUTLINE,  Double.valueOf(254), LanguageResource.getString("OUTLINECUTTINGSPEED_STR"));
 		
 		final Settings controlSettings = addCategory(LanguageResource.getString("CONTROLCATEGORY_STR"));
 		HashMap<Integer, String> homeingTypes = new HashMap<Integer, String>();

@@ -330,7 +330,7 @@ class JOGLThreeDView extends Panel implements ItemListener, MouseListener, Mouse
     {
         prevMouseX = e.getX();
         prevMouseY = e.getY();
-        if ((e.getModifiers() & e.BUTTON3_MASK) != 0)
+        if ((e.getModifiersEx() & e.BUTTON3_DOWN_MASK) != 0)
         {
             mouseRButtonDown = true;
         }
@@ -338,7 +338,7 @@ class JOGLThreeDView extends Panel implements ItemListener, MouseListener, Mouse
     
     public void mouseReleased(MouseEvent e)
     {
-        if ((e.getModifiers() & e.BUTTON3_MASK) != 0)
+        if ((e.getModifiersEx() & e.BUTTON3_DOWN_MASK) != 0)
         {
             mouseRButtonDown = false;
         }

@@ -54,17 +54,17 @@ public class Settings {
 
 	public void addBoolean(final String key, final boolean value, final String description )
 	{
-		addObject(key, new Boolean(value), description);
+		addObject(key, Boolean.valueOf(value), description);
 	}
 
 	public void addInteger(final String key, final int value, final String description )
 	{
-		addObject(key, new Integer(value), description);
+		addObject(key, Integer.valueOf(value), description);
 	}
 
 	public void addDouble(final String key, final double value, final String description )
 	{
-		addObject(key, new Double(value), description);
+		addObject(key, Double.valueOf(value), description);
 	}
 
 	public void addColor(final String key, final Color value, final String description )
@@ -99,17 +99,17 @@ public class Settings {
 
 	public void addBoolean(final String key, final boolean value, final String description, final SettingChangedCallback cb  )
 	{
-		addObject(key, new Boolean(value), description, cb);
+		addObject(key, Boolean.valueOf(value), description, cb);
 	}
 
 	public void addInteger(final String key, final int value, final String description, final SettingChangedCallback cb  )
 	{
-		addObject(key, new Integer(value), description, cb);
+		addObject(key, Integer.valueOf(value), description, cb);
 	}
 
 	public void addDouble(final String key, final double value, final String description, final SettingChangedCallback cb  )
 	{
-		addObject(key, new Double(value), description, cb);
+		addObject(key, Double.valueOf(value), description, cb);
 	}
 
 	public void addColor(final String key, final Color value, final String description, final SettingChangedCallback cb  )
@@ -149,17 +149,17 @@ public class Settings {
 
 	public void setBoolean(final String key, final boolean value)
 	{
-		mSettings.get(key).mValue = new Boolean(value);
+		mSettings.get(key).mValue = Boolean.valueOf(value);
 	}
 
 	public void setInteger(final String key, final int value)
 	{
-		mSettings.get(key).mValue = new Integer(value);
+		mSettings.get(key).mValue = Integer.valueOf(value);
 	}
 
 	public void setDouble(final String key, final double value)
 	{
-		mSettings.get(key).mValue = new Double(value);
+		mSettings.get(key).mValue = Double.valueOf(value);
 	}
 
 	public void setColor(final String key, final Color value)

@@ -3,20 +3,21 @@ import boardcad.gui.jdk.BoardCAD
 import boardcam.BoardMachine
 
 
-from javax.swing import JScrollPane
+from javax.swing import JScrollPane, JMenuItem, JFileChooser, JOptionPane
 
 from java.awt import * 
 
 
-from javax.swing import * 
+#from javax.swing import * 
 
 from java.io import *
+from java.io import File
 
 import java.awt.event.KeyEvent as KeyEvent
 
-
 import console
 
+import os
 
 
 def gcodeDeck(event):
@@ -89,7 +90,8 @@ def runScript(event):
 		return
 	mfile = fc.getSelectedFile()
 	filename = mfile.getPath()
-	
+	filename = filename.replace("\\","/")
+	#print (filename + "\n")
 	myconsole.insertText("execfile('" + filename + "')")
 	
 	myconsole.enter()

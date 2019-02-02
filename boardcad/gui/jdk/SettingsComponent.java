@@ -433,13 +433,13 @@ class EnumEditor extends AbstractCellEditor implements TableCellEditor {
 	 */
 	private static final long serialVersionUID = 4268145246290497799L;
 	JButton button;
-	JComboBox comboBox;
+	JComboBox<String> comboBox;
 	protected static final String EDIT = "edit";
 	Enumeration enu;
 	Integer result;
 
 	public EnumEditor() {
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setEditable(false);
 		comboBox.addActionListener(new ActionListener()
 		{

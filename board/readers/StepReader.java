@@ -24,7 +24,7 @@ public class StepReader {
 	 * @param dataIn - stream to the step file
 	 * @param brd - a BezierBoard where outline, rocker, and cross sections will be stored
 	 */
-	static public void loadFile(DataInputStream dataIn, BezierBoard brd)
+	static public void loadFile(BufferedReader dataIn, BezierBoard brd)
 	{
 		loadFile(dataIn, brd, false);
 	}
@@ -40,7 +40,8 @@ public class StepReader {
 
 		try
 		{
-			DataInputStream dataIn = new DataInputStream(new FileInputStream(filename));
+			// DEPRICATED DataInputStream dataIn = new DataInputStream(new FileInputStream(filename));
+			BufferedReader dataIn = new BufferedReader(new InputStreamReader(new FileInputStream(filename)));
 			loadFile(dataIn, brd, true);
 
 		}
@@ -51,7 +52,7 @@ public class StepReader {
 		}
 	}
 
-	static private void loadFile(DataInputStream dataIn, BezierBoard brd, boolean preview)
+	static private void loadFile(BufferedReader dataIn, BezierBoard brd, boolean preview)
 	{
 		int i, j;
 		int[] x;
