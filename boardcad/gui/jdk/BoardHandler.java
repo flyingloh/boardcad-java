@@ -170,7 +170,9 @@ public class BoardHandler
 	{
 		try
 		{
-			DataInputStream dataIn = new DataInputStream(new FileInputStream(filename));
+			//DataInputStream dataIn = new DataInputStream(new FileInputStream(filename));
+			//BufferedReader dataIn = new BufferedReader(new InputStreamReader(filename));
+			BufferedReader dataIn = new BufferedReader(new FileReader(filename));
 			new_boards++;
 
 			StepReader.loadFile(dataIn, brd);
