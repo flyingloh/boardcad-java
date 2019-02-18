@@ -1270,7 +1270,7 @@ class ThreeDView extends Panel implements ItemListener
 
 		// add orbit behavior to the ViewingPlatform
        
-		OrbitBehavior orbit = new OrbitBehavior(c);
+		OrbitBehavior orbit = new OrbitBehavior(c,OrbitBehavior.REVERSE_ROTATE);
 		orbit.setSchedulingBounds(bounds);
 		viewingPlatform.setViewPlatformBehavior(orbit);
 
