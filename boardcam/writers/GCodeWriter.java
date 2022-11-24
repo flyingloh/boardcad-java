@@ -2,7 +2,7 @@ package boardcam.writers;
 
 import java.io.PrintStream;
 
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3d;
 
 import boardcam.MachineConfig;
 import boardcam.toolpathgenerators.ext.CoordinateScaling;

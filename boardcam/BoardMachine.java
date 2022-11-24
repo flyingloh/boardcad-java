@@ -3,7 +3,7 @@ package boardcam;
 import cadcore.*;
 import boardcad.ScriptLoader;
 
-import javax.vecmath.*;
+import org.jogamp.vecmath.*;
 import java.io.*;
 import java.util.*;
 

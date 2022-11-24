@@ -3,7 +3,7 @@ package boardcam;
 
 import java.util.HashMap;
 
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 import cadcore.UnitUtils;
 

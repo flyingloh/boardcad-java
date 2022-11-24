@@ -11,21 +11,21 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.media.j3d.Appearance;
-import javax.media.j3d.ColoringAttributes;
-import javax.media.j3d.GeometryArray;
-import javax.media.j3d.IndexedQuadArray;
-import javax.media.j3d.LineArray;
-import javax.media.j3d.Shape3D;
+import org.jogamp.java3d.Appearance;
+import org.jogamp.java3d.ColoringAttributes;
+import org.jogamp.java3d.GeometryArray;
+import org.jogamp.java3d.IndexedQuadArray;
+import org.jogamp.java3d.LineArray;
+import org.jogamp.java3d.Shape3D;
 
 import cadcore.BezierSpline;
 import cadcore.UnitUtils;
 import cadcore.AxisAlignedBoundingBox;
 
-import com.sun.j3d.utils.geometry.Box;
-import javax.vecmath.Point2d;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.java3d.utils.geometry.Box;
+import org.jogamp.vecmath.Point2d;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
 import board.AbstractBoard;
 import board.BezierBoard;

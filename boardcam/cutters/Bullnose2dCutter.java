@@ -3,7 +3,7 @@ package boardcam.cutters;
 import cadcore.*;
 import board.AbstractBoard;
 
-import javax.vecmath.*;
+import org.jogamp.vecmath.*;
 
 /**
  * A flat bottom cutter with rounded corners which allows curved rails to 

@@ -2,8 +2,8 @@ package boardcam.toolpathgenerators;
 
 import java.awt.geom.Point2D;
 
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
 import cadcore.BezierSpline;
 

@@ -1,8 +1,8 @@
 package boardcam.cutters;
 
-import javax.media.j3d.BranchGroup;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.java3d.BranchGroup;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
 import board.AbstractBoard;
 import cadcore.AxisAlignedBoundingBox;

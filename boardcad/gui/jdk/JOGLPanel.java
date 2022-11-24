@@ -31,25 +31,25 @@ import java.awt.event.MouseMotionListener;
 
 
 
-import javax.media.opengl.GLAutoDrawable;
-import javax.media.opengl.GLEventListener;
-import javax.media.opengl.GLProfile;
-import javax.media.opengl.GLCapabilities;
-import javax.media.opengl.awt.GLCanvas;
-import javax.media.opengl.awt.GLJPanel;
+import com.jogamp.opengl.GLAutoDrawable;
+import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.GLCapabilities;
+import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.awt.GLJPanel;
 
 
-import javax.media.opengl.GL;
-import javax.media.opengl.GL2;
-import javax.media.opengl.glu.GLU;
+import com.jogamp.opengl.GL;
+import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.glu.GLU;
 
 
 import cadcore.NurbsPoint;
 
-import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
-import com.sun.j3d.utils.image.TextureLoader;
-import com.sun.j3d.utils.universe.PlatformGeometry;
-import com.sun.j3d.utils.universe.SimpleUniverse;
+import org.jogamp.java3d.utils.behaviors.vp.OrbitBehavior;
+import org.jogamp.java3d.utils.image.TextureLoader;
+import org.jogamp.java3d.utils.universe.PlatformGeometry;
+import org.jogamp.java3d.utils.universe.SimpleUniverse;
 
 
 
@@ -57,19 +57,19 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.media.opengl.GL2;
-import javax.media.opengl.GLAutoDrawable;
-import javax.media.opengl.GLEventListener;
-import javax.media.opengl.awt.GLCanvas;
-import javax.media.opengl.glu.GLU;
+// import com.jogamp.opengl.GL2;
+// import com.jogamp.opengl.GLAutoDrawable;
+// import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.FPSAnimator;
-import static javax.media.opengl.GL.*;  // GL constants
-import static javax.media.opengl.GL2.*; // GL2 constants
+import static com.jogamp.opengl.GL.*;  // GL constants
+import static com.jogamp.opengl.GL2.*; // GL2 constants
 
 
 
 
-import com.sun.j3d.utils.universe.ViewingPlatform;
+import org.jogamp.java3d.utils.universe.ViewingPlatform;
 
 
 
@@ -289,6 +289,13 @@ class JOGLThreeDView extends Panel implements ItemListener, MouseListener, Mouse
         
         GLProfile glprofile = GLProfile.getDefault();
         GLCapabilities glcapabilities = new GLCapabilities( glprofile );
+        System.out.println("Profile Details: " + glprofile.toString());
+        System.out.println("System Capabilities:" + glcapabilities.toString());
+        System.out.println("Is GL2 Supported?: " + glprofile.isGL2());
+        System.out.println("Is GL3 Supported?: " + glprofile.isGL3());
+        System.out.println("Is GL3bc Supported?: " + glprofile.isGL3bc());
+        System.out.println("Is GL4 Supported?: " + glprofile.isGL4());
+        System.out.println("Is GL4bc Supported?: " + glprofile.isGL4bc());
         gljpanel = new GLJPanel( glcapabilities );
         add(gljpanel);
         
@@ -303,7 +310,7 @@ class JOGLThreeDView extends Panel implements ItemListener, MouseListener, Mouse
             
             @Override
             public void init( GLAutoDrawable glautodrawable ) {
-                shapingbay.init( glautodrawable.getGL().getGL2(), glautodrawable.getWidth(), glautodrawable.getHeight() );
+                shapingbay.init( glautodrawable.getGL().getGL2(), glautodrawable.getSurfaceWidth(), glautodrawable.getSurfaceHeight() );
             }
             
             @Override
@@ -312,7 +319,7 @@ class JOGLThreeDView extends Panel implements ItemListener, MouseListener, Mouse
             
             @Override
             public void display( GLAutoDrawable glautodrawable ) {
-                shapingbay.render( glautodrawable.getGL().getGL2(), glautodrawable.getWidth(), glautodrawable.getHeight() );
+                shapingbay.render( glautodrawable.getGL().getGL2(), glautodrawable.getSurfaceWidth(), glautodrawable.getSurfaceHeight() );
             }
         });
  

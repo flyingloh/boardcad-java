@@ -1,7 +1,7 @@
 package cadcore;
 
 import java.io.*;
-import javax.vecmath.*;
+import org.jogamp.vecmath.*;
 
 //=========================================================NurbsSurface
 /**

@@ -2,7 +2,7 @@ package boardcam.writers;
 
 import java.io.PrintStream;
 
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3d;
 
 public abstract class AbstractMachineWriter {
 	abstract public void writeMetric(PrintStream stream);

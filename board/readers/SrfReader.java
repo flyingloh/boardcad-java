@@ -7,7 +7,7 @@ import java.io.FileInputStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 import board.BezierBoard;
 

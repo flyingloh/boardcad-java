@@ -1,7 +1,7 @@
 package boardcam.writers;
 
 import java.io.PrintStream;
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3d;
 
 import boardcam.writers.AbstractMachineWriter;
 

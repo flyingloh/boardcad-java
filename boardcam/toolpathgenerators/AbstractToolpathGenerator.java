@@ -8,9 +8,9 @@ import java.util.Locale;
 
 import javax.swing.ProgressMonitor; //TODO: Bad dependency
 import javax.swing.SwingWorker;
-import javax.vecmath.Matrix4d;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Matrix4d;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
 import cadcore.UnitUtils;
 

@@ -5,8 +5,8 @@ import cadcore.*;
 import java.awt.*;
 import java.awt.geom.*;
 
-import javax.media.j3d.*;
-import javax.vecmath.*;
+import org.jogamp.java3d.*;
+import org.jogamp.vecmath.*;
 
 import java.io.*;
 import java.util.*;

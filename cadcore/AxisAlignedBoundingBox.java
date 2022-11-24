@@ -1,6 +1,6 @@
 package cadcore;
 
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 public class AxisAlignedBoundingBox 
 {

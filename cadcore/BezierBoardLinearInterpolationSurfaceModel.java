@@ -2,7 +2,7 @@ package cadcore;
 
 import board.BezierBoard;
 
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 
 class BezierBoardLinearInterpolationSurfaceModel extends AbstractBezierBoardSurfaceModel

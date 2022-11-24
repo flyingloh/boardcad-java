@@ -7,12 +7,12 @@ import java.io.IOException;
 
 import java.io.PrintStream;
 
-import javax.media.j3d.BranchGroup;
-import javax.media.j3d.PickSegment;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.java3d.BranchGroup;
+import org.jogamp.java3d.PickSegment;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
-import com.sun.j3d.utils.behaviors.picking.Intersect;
+import org.jogamp.java3d.utils.behaviors.picking.Intersect;
 
 import cadcore.NurbsSurface;
 import cadcore.NurbsPoint;

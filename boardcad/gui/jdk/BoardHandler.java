@@ -19,9 +19,9 @@ import java.io.File;
 import java.text.DecimalFormat;
 import java.util.*;
 
-import javax.media.j3d.*;
-import javax.vecmath.*;
-import com.sun.j3d.utils.geometry.*;
+import org.jogamp.java3d.*;
+import org.jogamp.vecmath.*;
+import org.jogamp.java3d.utils.geometry.*;
 
 import java.io.*;
 

@@ -45,7 +45,7 @@ import java.awt.print.PrinterJob;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 import cadcore.UnitUtils;
 

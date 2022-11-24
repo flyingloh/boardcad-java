@@ -1,6 +1,6 @@
 package board;
 
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3d;
 
 public abstract class AbstractBoard 
 {

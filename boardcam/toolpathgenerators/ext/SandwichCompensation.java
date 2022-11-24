@@ -2,9 +2,9 @@ package boardcam.toolpathgenerators.ext;
 
 import java.awt.geom.Point2D;
 
-import javax.vecmath.Point2d;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Point2d;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
 import board.BezierBoard;
 import boardcad.settings.Settings;

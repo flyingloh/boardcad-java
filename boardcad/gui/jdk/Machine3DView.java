@@ -6,37 +6,37 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.media.j3d.AmbientLight;
-import javax.media.j3d.Appearance;
-import javax.media.j3d.Background;
-import javax.media.j3d.BoundingSphere;
-import javax.media.j3d.BranchGroup;
-import javax.media.j3d.Canvas3D;
-import javax.media.j3d.ColoringAttributes;
-import javax.media.j3d.DirectionalLight;
-import javax.media.j3d.GeometryArray;
-import javax.media.j3d.Group;
-import javax.media.j3d.LineArray;
-import javax.media.j3d.LineStripArray;
-import javax.media.j3d.Shape3D;
-import javax.media.j3d.Switch;
-import javax.media.j3d.Transform3D;
-import javax.media.j3d.TransformGroup;
-import javax.media.j3d.ViewPlatform;
+import org.jogamp.java3d.AmbientLight;
+import org.jogamp.java3d.Appearance;
+import org.jogamp.java3d.Background;
+import org.jogamp.java3d.BoundingSphere;
+import org.jogamp.java3d.BranchGroup;
+import org.jogamp.java3d.Canvas3D;
+import org.jogamp.java3d.ColoringAttributes;
+import org.jogamp.java3d.DirectionalLight;
+import org.jogamp.java3d.GeometryArray;
+import org.jogamp.java3d.Group;
+import org.jogamp.java3d.LineArray;
+import org.jogamp.java3d.LineStripArray;
+import org.jogamp.java3d.Shape3D;
+import org.jogamp.java3d.Switch;
+import org.jogamp.java3d.Transform3D;
+import org.jogamp.java3d.TransformGroup;
+import org.jogamp.java3d.ViewPlatform;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
-import javax.vecmath.Color3f;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
-import javax.vecmath.Vector3f;
+import org.jogamp.vecmath.Color3f;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
+import org.jogamp.vecmath.Vector3f;
 
 import cadcore.UnitUtils;
 
-import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
-import com.sun.j3d.utils.universe.SimpleUniverse;
-import com.sun.j3d.utils.universe.ViewingPlatform;
+import org.jogamp.java3d.utils.behaviors.vp.OrbitBehavior;
+import org.jogamp.java3d.utils.universe.SimpleUniverse;
+import org.jogamp.java3d.utils.universe.ViewingPlatform;
 import boardcad.i18n.LanguageResource;
 
 
@@ -196,7 +196,7 @@ public class Machine3DView extends JComponent{
 		BranchGroup scene = createSceneGraph();
 		universe.addBranchGraph(scene);		
 		
-		canvas.getView().setFrontClipPolicy(javax.media.j3d.View.VIRTUAL_EYE);
+		canvas.getView().setFrontClipPolicy(org.jogamp.java3d.View.VIRTUAL_EYE);
 		canvas.getView().setFrontClipDistance(0.01);
 		
 	}
@@ -213,7 +213,7 @@ public class Machine3DView extends JComponent{
 		BoundingSphere bounds = new BoundingSphere(new Point3d(0.0,0.0,0.0), 1000.0);
 
 		// Set up the background
-		Color3f bgColor = new Color3f(BoardCAD.getInstance().getBackgroundColor());
+		Color3f bgColor = new Color3f(BoardCAD.getInstance().getBackgroundColor3f());
 		mBackgroundNode = new Background(bgColor);
 		mBackgroundNode.setApplicationBounds(bounds);
 		mBackgroundNode.setCapability(Background.ALLOW_COLOR_WRITE);
@@ -479,8 +479,8 @@ public class Machine3DView extends JComponent{
 		mBottomSurfaceNormalsSwitch.addChild(mBottomSurfaceNormals);
 
 //DEBUG
-//		mDeckGroup.addChild(new com.sun.j3d.utils.geometry.Box(100.0f,100.0f, 100.0f, new Appearance()));
-//		mBottomGroup.addChild(new com.sun.j3d.utils.geometry.Box());
+//		mDeckGroup.addChild(new org.jogamp.java3d.utils.geometry.Box(100.0f,100.0f, 100.0f, new Appearance()));
+//		mBottomGroup.addChild(new org.jogamp.java3d.utils.geometry.Box());
 		
 		// Have Java 3D perform optimizations on this scene graph.
 //		branchRoot.compile();	CANNOT ADD AND REMOVE NODES THEN

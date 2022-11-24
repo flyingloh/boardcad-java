@@ -2,7 +2,7 @@ package cadcore;
 
 import java.awt.geom.Point2D;
 
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 public class MathUtils {
 	

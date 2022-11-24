@@ -9,8 +9,8 @@ import java.util.Locale;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
-import javax.vecmath.Point3d;
-import javax.vecmath.Vector3d;
+import org.jogamp.vecmath.Point3d;
+import org.jogamp.vecmath.Vector3d;
 
 import cadcore.BezierSpline;
 

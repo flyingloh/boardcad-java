@@ -31,12 +31,12 @@ import java.util.Locale;
 import java.util.prefs.*;
 
 import javax.imageio.ImageIO;
-import javax.media.j3d.*;
+import org.jogamp.java3d.*;
 import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.event.*;
 import javax.swing.filechooser.*;
-import javax.vecmath.*;
+import org.jogamp.vecmath.*;
 
 import cadcore.*;
 import board.*;
@@ -865,6 +865,10 @@ public class BoardCAD implements Runnable, ActionListener, ItemListener, KeyEven
 	public Color getBackgroundColor() {
 
 		return mColorSettings.getColor(BACKGROUNDCOLOR);
+	}
+
+	public float[] getBackgroundColor3f() {
+      return mColorSettings.getColor(BACKGROUNDCOLOR).getRGBComponents(null);
 	}
 
 	public Color getUnselectedBackgroundColor() {

@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.BevelBorder;
-import javax.vecmath.Point3d;
+import org.jogamp.vecmath.Point3d;
 
 import board.BezierBoard;
 

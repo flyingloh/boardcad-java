@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.util.ArrayList;
 
-import javax.vecmath.*;
+import org.jogamp.vecmath.*;
 
 import board.*;
 import cadcore.*;
