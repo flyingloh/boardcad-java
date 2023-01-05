@@ -33,10 +33,8 @@ import javax.print.attribute.standard.*;
 public class BoardHandler
 {
 	private NurbsBoard active_board;
-	private NurbsBoard boards[];
+	private ArrayList<NurbsBoard> boards;
 	private NurbsBoard blank;
-	private int nr_of_boards;
-	private int new_boards;
 	private NurbsPoint active;
 	private NurbsPoint help_points[];
 	private int nr_of_help_points;
@@ -49,9 +47,7 @@ public class BoardHandler
 
 	public BoardHandler()
 	{
-		nr_of_boards=0;
-		new_boards=0;
-		boards=new NurbsBoard[10];
+		boards=new ArrayList<NurbsBoard>();
 		active=new NurbsPoint(0,0,0);
 		help_points=new NurbsPoint[1000];
 		nr_of_help_points=0;
@@ -96,7 +92,7 @@ public class BoardHandler
 
 	public int get_nr_of_boards()
 	{
-		return nr_of_boards;
+		return boards.size();
 	}
 
 	public String get_board_name()
@@ -115,20 +111,15 @@ public class BoardHandler
 
 	public void new_board()
 	{
-		new_boards++;
-		boards[nr_of_boards]=new NurbsBoard();
-		boards[nr_of_boards].set_name("board"+new_boards);
-		active_board=boards[nr_of_boards];
-		nr_of_boards++;
+		 new_board(1800);
 	}
 	
 	public void new_board(double length)
 	{
-		new_boards++;
-		boards[nr_of_boards]=new NurbsBoard(length);
-		boards[nr_of_boards].set_name("board"+new_boards);
-		active_board=boards[nr_of_boards];
-		nr_of_boards++;
+      active_board = new NurbsBoard(length);
+      active_board.set_name("board" + (boards.size()+1));
+		boards.add(active_board);
+		System.out.println("Added new board " + active_board.get_name());
 	}
 
 /*	public void new_board(double length, double width, double thickness, double scoop, double rocker)
@@ -151,11 +142,10 @@ public class BoardHandler
 		try
 		{
 			DataInputStream dataIn = new DataInputStream(new FileInputStream(filename));
-			new_boards++;
-			boards[nr_of_boards]=new NurbsBoard(dataIn);
-			boards[nr_of_boards].set_name(filename);
-			active_board=boards[nr_of_boards];
-			nr_of_boards++;
+			active_board = new NurbsBoard(dataIn);
+			active_board.set_name(filename);
+		   boards.add(active_board);
+		   System.out.println("Opened board " + active_board.get_name());
 			dataIn.close();
 		}
 		catch(IOException excep1)
@@ -173,16 +163,14 @@ public class BoardHandler
 			//DataInputStream dataIn = new DataInputStream(new FileInputStream(filename));
 			//BufferedReader dataIn = new BufferedReader(new InputStreamReader(filename));
 			BufferedReader dataIn = new BufferedReader(new FileReader(filename));
-			new_boards++;
-
 			StepReader.loadFile(dataIn, brd);
-			boards[nr_of_boards]=new NurbsBoard(StepReader.deck, StepReader.bottom);
-			boards[nr_of_boards].set_cartesian_transformation_operator(StepReader.local_origin, StepReader.x_axis_direction, StepReader.y_axis_direction);
+			active_board=new NurbsBoard(StepReader.deck, StepReader.bottom);
+			active_board.set_cartesian_transformation_operator(StepReader.local_origin, StepReader.x_axis_direction, StepReader.y_axis_direction);
 
-//			boards[nr_of_boards]=new NurbsBoard(dataIn, brd);
-			boards[nr_of_boards].set_name(filename);
-			active_board=boards[nr_of_boards];
-			nr_of_boards++;
+//			active_board=new NurbsBoard(dataIn, brd);
+			active_board.set_name(filename);
+		   boards.add(active_board);
+		   System.out.println("Opened board " + active_board.get_name());
 			dataIn.close();
 		}
 		catch(IOException excep1)
@@ -589,7 +577,11 @@ public class BoardHandler
 
 	public void set_active_board(int nr)
 	{
-		active_board=boards[nr];
+		System.out.println("Setting active board to index " + nr);
+      if (nr < boards.size() && nr >= 0)
+		   active_board=boards.get(nr);
+      else
+		   System.out.println("Failed to set active board, index " + nr + " out of range.");
 	}
 
 	public void set_resolution(int resolution)
